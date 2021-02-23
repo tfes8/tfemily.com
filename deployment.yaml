@@ -70,7 +70,7 @@ spec:
         - name: TWITTER_CONSUMER_SECRET
           value: "K0S9PGoynsDjIDWlUEidsiCsLWN6MFOR4vzkDKsdWGNxLaTkQF"
         - name: MYSQL_DB_HOST
-          value: "tfemily-db"
+          value: "tfemily-db-svc"
         - name: MYSQL_DB_PORT
           value: "3306"
         - name: MYSQL_DB_NAME
