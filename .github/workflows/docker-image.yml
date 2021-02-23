@@ -15,4 +15,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag tfes8/tfemily-web:$(date +%s)
+      run: |
+        docker build . --file Dockerfile --tag tfes8/tfemily-web:latest
+        docker tag tfes8/tfemily-web:latest tfes8/tfemily-web:$(date +%s)
+      
+    - name: Log in to Docker Hub registry
+      run: echo '${{ secrets.DOCKER_HUB_TOKEN }}' | docker login --username  ${{ secrets.DOCKER_USER_NAME }} --password-stdin
+      
+    - name: Push to Docker Hub
+      run: docker push -a tfes8/tfemily-web
