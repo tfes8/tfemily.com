@@ -25,16 +25,16 @@ jobs:
     - name: Push to Docker Hub
       run: docker push -a tfes8/tfemily-web
 
-#    - name: Install doctl
-#      uses: digitalocean/action-doctl@v2
-#      with:
-#        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-#    
-#    - name: Save DigitalOcean kubeconfig
-#      run: doctl kubernetes cluster kubeconfig save k8s-1-17-5-do-0-nyc1-1590032691719
-#    
-#    - name: Deploy to DigitalOcean Kubernetes
-#      run: |
-#        kubectl apply -f $GITHUB_WORKSPACE/deployment.yaml
-#    - name: Verify deployment
-#      run: kubectl rollout status -n tfemily deployment/tfemily-web-deploy
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+   
+    - name: Save DigitalOcean kubeconfig
+      run: doctl kubernetes cluster kubeconfig save k8s-1-20-2-do-0-nyc1-1614202979398
+   
+    - name: Deploy to DigitalOcean Kubernetes
+      run: |
+        kubectl apply -f $GITHUB_WORKSPACE/deployment.yaml
+    - name: Verify deployment
+      run: kubectl rollout status -n tfemily deployment/tfemily-web-deploy
