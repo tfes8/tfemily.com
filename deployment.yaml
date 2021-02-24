@@ -1,3 +1,18 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: tfemily-db-pvc
+  namespace: tfemily
+  labels:
+    app: tfemily-db
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: do-block-storage
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -27,6 +42,13 @@ spec:
           envFrom:
             - secretRef:
               name: tfemily-db-secret
+          volumeMounts:
+            - name: db-pvc
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: db-pvc
+          persistentVolumeClaim:
+            claimName: tfemily-db-pvc
 ---
 apiVersion: apps/v1
 kind: Deployment
