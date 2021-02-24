@@ -1,3 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tfemily-db-config
+  namespace: tfemily
+  labels:
+    app: tfemily-db
+data:
+  MYSQL_ROOT_PASSWORD: changeme
+  MYSQL_DATABASE: tfemily
+  MYSQL_USER: tfes8
+  MYSQL_PASSWORD: changeme
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -24,15 +37,9 @@ spec:
           ports:
             - containerPort: 3306
               name: db-port
-          env:
-            - name: MYSQL_ROOT_PASSWORD
-              value: changeme
-            - name: MYSQL_DATABASE
-              value: tfemily
-            - name: MYSQL_USER
-              value: tfes8
-            - name: MYSQL_PASSWORD
-              value: changeme
+          envFrom:
+            - configMapRef:
+              name: tfemily-db-config
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -70,15 +77,24 @@ spec:
         - name: TWITTER_CONSUMER_SECRET
           value: "K0S9PGoynsDjIDWlUEidsiCsLWN6MFOR4vzkDKsdWGNxLaTkQF"
         - name: MYSQL_DB_HOST
-          value: "tfemily-db-svc"
+          value: "tfemily-web-svc"
         - name: MYSQL_DB_PORT
           value: "3306"
         - name: MYSQL_DB_NAME
-          value: "tfemily"
+          valueFrom:
+            configMapKeyRef: 
+              key: MYSQL_DATABASE
+              name: tfemily-db-config
         - name: MYSQL_DB_USERNAME
-          value: "tfes8"
+          valueFrom:
+            configMapKeyRef: 
+              key: MYSQL_USER
+              name: tfemily-db-config
         - name: MYSQL_DB_PASSWORD
-          value: "changeme"
+          valueFrom:
+            configMapKeyRef: 
+              key: MYSQL_PASSWORD
+              name: tfemily-db-config
       imagePullSecrets:
       - name: dockerhub
 ---
