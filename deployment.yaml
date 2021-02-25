@@ -93,7 +93,7 @@ spec:
         - name: ALLOWED_ORIGINS
           value: "https://tfemily.com"
         - name: SPRING_OPTS
-          value: "--spring.profiles.active=--spring.profiles.active=jpa-prod,db-docker-mysql,twitter,aws-local --spring.messages.basename=file:/messages,messages --server.port=8080 --spring.jpa.hibernate.ddl-auto=update --photoDirectory=/web-pvc/photos/"
+          value: "--spring.profiles.active=--spring.profiles.active=jpa-prod,db-docker-mysql,twitter,aws-local --spring.messages.basename=file:/messages,messages --server.port=8080 --spring.jpa.hibernate.ddl-auto=update --photoDirectory=/web-pvc/photos/ --applicationUrl=https://tfemily.com"
 #This is in the spring_opts instead
 #        - name: PHOTO_DIRECTORY
 #          value: "/web-pvc/photos/"
