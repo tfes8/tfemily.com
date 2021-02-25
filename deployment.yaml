@@ -136,7 +136,7 @@ spec:
   selector:
     app: tfemily-db
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: tfemily-web-ingress
@@ -167,7 +167,10 @@ spec:
     http:
       paths:
       - path: /
+        pathType: Prefix
         backend:
-          serviceName: tfemily-web-svc
-          servicePort: 8080
+          service:
+            name: tfemily-web-svc
+            port: 
+              number: 8080
 
