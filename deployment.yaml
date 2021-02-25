@@ -13,6 +13,21 @@ spec:
       storage: 5Gi
   storageClassName: do-block-storage
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: tfemily-web-pvc
+  namespace: tfemily
+  labels:
+    app: tfemily-web
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: do-block-storage
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -80,7 +95,7 @@ spec:
         - name: SPRING_OPTS
           value: "--spring.profiles.active=--spring.profiles.active=jpa-prod,db-docker-mysql,twitter,aws-local --spring.messages.basename=file:/messages,messages --server.port=8080 --spring.jpa.hibernate.ddl-auto=create-drop"
         - name: PHOTO_DIRECTORY
-          value: "/photos/"
+          value: "/web-pvc/photos/"
         - name: TWITTER_CONSUMER_KEY
           value: "BRhRexBkiwsOFRGi5oNAMFB9O"
         - name: TWITTER_CONSUMER_SECRET
@@ -104,6 +119,13 @@ spec:
             secretKeyRef: 
               key: MYSQL_PASSWORD
               name: tfemily-db-secret
+        volumeMounts:
+        - name: web-pvc
+          mountPath: /web-pvc
+      volumes:
+      - name: web-pvc
+        persistentVolumeClaim:
+          claimName: tfemily-web-pvc
       imagePullSecrets:
       - name: dockerhub
 ---
