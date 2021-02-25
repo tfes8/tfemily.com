@@ -97,9 +97,15 @@ spec:
         - name: PHOTO_DIRECTORY
           value: "/web-pvc/photos/"
         - name: TWITTER_CONSUMER_KEY
-          value: "BRhRexBkiwsOFRGi5oNAMFB9O"
+          valueFrom:
+            secretKeyRef: 
+              key: TWITTER_CONSUMER_KEY
+              name: tfemily-twitter-secret
         - name: TWITTER_CONSUMER_SECRET
-          value: "K0S9PGoynsDjIDWlUEidsiCsLWN6MFOR4vzkDKsdWGNxLaTkQF"
+          valueFrom:
+            secretKeyRef: 
+              key: TWITTER_CONSUMER_SECRET
+              name: tfemily-twitter-secret
         - name: MYSQL_DB_HOST
           value: "tfemily-db-svc"
         - name: MYSQL_DB_PORT
