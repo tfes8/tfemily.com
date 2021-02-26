@@ -8,7 +8,7 @@ LABEL version="1.0.0"\
 
 # Copy the script and Spring Boot "uberjar" that is built by Maven into the Docker image
 ADD messages.properties .
-ADD templates .
+ADD templates /templates/
 
 # Install prereq's
 RUN chmod +x start.sh
