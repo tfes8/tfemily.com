@@ -52,7 +52,6 @@ spec:
         - name: mariadb
           image: mariadb
           imagePullPolicy: IfNotPresent
-          restartPolicy: Always
           ports:
             - containerPort: 3306
               name: db-port
@@ -92,7 +91,6 @@ spec:
       containers:
       - image: tfes8/tfemily-web:latest
         imagePullPolicy: Always
-        restartPolicy: Always
         name: tfemily-web
         ports:
         - containerPort: 8080
