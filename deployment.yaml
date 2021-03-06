@@ -113,7 +113,7 @@ spec:
             secretKeyRef: 
               key: TWITTER_CONSUMER_SECRET
               name: tfemily-twitter-secret
-		- name: DISCORD_TOKEN
+        - name: DISCORD_TOKEN
           valueFrom:
             secretKeyRef: 
               key: DISCORD_TOKEN
