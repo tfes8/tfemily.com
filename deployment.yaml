@@ -183,28 +183,28 @@ kind: Ingress
 metadata:
   name: tfemily-web-ingress
   namespace: tfemily
-  annotations:
-    kubernetes.io/ingress.class: nginx
+#   annotations:
+#     kubernetes.io/ingress.class: nginx
 #     cert-manager.io/cluster-issuer: letsencrypt-prod
 #     #nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-    cert-manager.io/cluster-issuer: "letsencrypt-staging"
-    nginx.ingress.kubernetes.io/affinity: "cookie"
-    nginx.ingress.kubernetes.io/session-cookie-name: "route"
-    nginx.ingress.kubernetes.io/session-cookie-hash: "sha1"
-    nginx.ingress.kubernetes.io/session-cookie-expires: "172800"
-    nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
-    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
-    nginx.ingress.kubernetes.io/enable-cors: "true"
-    nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
-    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      more_set_headers "Access-Control-Allow-Origin: $http_origin";
+#     cert-manager.io/cluster-issuer: "letsencrypt-staging"
+#     nginx.ingress.kubernetes.io/affinity: "cookie"
+#     nginx.ingress.kubernetes.io/session-cookie-name: "route"
+#     nginx.ingress.kubernetes.io/session-cookie-hash: "sha1"
+#     nginx.ingress.kubernetes.io/session-cookie-expires: "172800"
+#     nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
+#     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+#     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+#     nginx.ingress.kubernetes.io/enable-cors: "true"
+#     nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
+#     nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+#     nginx.ingress.kubernetes.io/configuration-snippet: |
+#       more_set_headers "Access-Control-Allow-Origin: $http_origin";
 spec:
   tls:
   - hosts:
     - tfemily.com
-    secretName: tfemily-web-tls
+#     secretName: tfemily-web-tls
   rules:
   - host: tfemily.com
     http:
