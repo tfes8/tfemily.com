@@ -183,8 +183,8 @@ kind: Ingress
 metadata:
   name: tfemily-web-ingress
   namespace: tfemily
-#   annotations:
-#     kubernetes.io/ingress.class: nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx
 #     cert-manager.io/cluster-issuer: letsencrypt-prod
 #     #nginx.ingress.kubernetes.io/ssl-passthrough: "true"
 #     nginx.ingress.kubernetes.io/affinity: "cookie"
