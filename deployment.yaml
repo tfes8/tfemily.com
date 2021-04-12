@@ -103,6 +103,21 @@ spec:
 #This is in the spring_opts instead
 #        - name: PHOTO_DIRECTORY
 #          value: "/web-pvc/photos/"
+        - name: SMTP_HOST
+          valueFrom:
+            secretKeyRef: 
+              key: SMTP_HOST
+              name: tfemily-email-smtp-secret
+        - name: SMTP_USERNAME
+          valueFrom:
+            secretKeyRef: 
+              key: SMTP_USERNAME
+              name: tfemily-email-smtp-secret
+        - name: SMTP_PASSWORD
+          valueFrom:
+            secretKeyRef: 
+              key: SMTP_PASSWORD
+              name: tfemily-email-smtp-secret
         - name: TWITTER_CONSUMER_KEY
           valueFrom:
             secretKeyRef: 
