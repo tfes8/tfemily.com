@@ -1,4 +1,4 @@
-FROM apfesta/mixednutz-app-server:2.0.13
+FROM apfesta/mixednutz-app-server:2.0.14
 
 ENV VERSION=1.0.0
 
@@ -8,6 +8,7 @@ LABEL version="1.0.0"\
 
 # Copy the script and Spring Boot "uberjar" that is built by Maven into the Docker image
 ADD messages.properties .
+ADD ads.txt .
 ADD templates /templates/
 
 # Install prereq's
