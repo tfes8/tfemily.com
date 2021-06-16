@@ -1,4 +1,4 @@
-FROM apfesta/mixednutz-app-server:2.0.22
+FROM apfesta/mixednutz-app-server:2.0.23
 
 ENV VERSION=1.0.0
 
