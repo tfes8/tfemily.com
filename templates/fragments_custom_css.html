@@ -78,6 +78,43 @@
     }
 }
 </style>
+	
+<div th:fragment="custom_horizontal_ad">
+	<style>
+	.custom_advertisement .element {
+		margin-top: 5px;
+		margin-bottom: 5px;
+		border-radius: 5px;
+		border: 1px solid #CCC;
+		padding: 10px;
+		min-height: 68px;
+		background-color: #FEF;
+		text-align: center;
+		font-weight: bold;
+	}
+	.custom_advertisement .element img {
+		float: left;
+		margin-right: 10px;
+	}
+	.custom_advertisement .element .line {
+		margin-bottom: 1em;
+	}
+	.custom_advertisement .element .line1 {
+		font-size:1.4em;
+	}
+	</style>
+	<div class="element">
+		
+		<a href="https://www.amazon.com/Second-Chances-T-F-Emily-Sorrento-ebook/dp/B0B5451B87">
+			<img src="https://m.media-amazon.com/images/I/41u+AuqtcdL.jpg" width="100"/>
+			<div class="line line1">Now Available on Amazon</div>
+			<div class="line line2">He was supposed to go<br/> 
+			to his reunion in a tux.<br/> 
+			Now he's heading back to homecoming in a<br/> dress.</div>
+			<div class="line line3">Second Chances - a gender bending time travel adventure by TF Emily.</div>
+		</a>
+	</div>
+</div>
   	
 </body>
 </html>
