@@ -50,7 +50,7 @@ spec:
     spec:
       containers:
         - name: mariadb
-          image: mariadb
+          image: mariadb:10.11.4
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3306
