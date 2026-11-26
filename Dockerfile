@@ -1,4 +1,4 @@
-FROM apfesta/mixednutz-app-server:2.1.33.1
+FROM apfesta/mixednutz-app-server:2.1.33.2
 #bump
 
 ENV VERSION=1.0.0
